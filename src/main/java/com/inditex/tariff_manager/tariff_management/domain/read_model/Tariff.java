@@ -1,5 +1,6 @@
 package com.inditex.tariff_manager.tariff_management.domain.read_model;
 
+import com.inditex.tariff_manager.tariff_management.domain.exceptions.InvalidTariff;
 import com.inditex.tariff_manager.tariff_management.domain.read_model.value_objects.Price;
 import com.inditex.tariff_manager.tariff_management.domain.read_model.value_objects.TariffEndDate;
 import com.inditex.tariff_manager.tariff_management.domain.read_model.value_objects.TariffId;
@@ -28,7 +29,7 @@ public final class Tariff {
     ) {
 
         if (endDate.getValue().isAfter(startDate.getValue())) {
-            throw new RuntimeException();
+            throw InvalidTariff.endDateEarlierThanStartDate();
         }
 
         this.id = id;
