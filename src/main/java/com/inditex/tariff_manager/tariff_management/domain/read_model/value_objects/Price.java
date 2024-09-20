@@ -4,6 +4,7 @@ import lombok.Value;
 
 @Value(staticConstructor = "of")
 public class Price {
+
     double amount;
     String currency;
 }

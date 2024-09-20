@@ -1,11 +1,11 @@
 services:
 
-  tariff_manager:
-    container_name: spring_tariff_manager
-    build:
-      context: ./
-      dockerfile: ./Dockerfile
-    env_file:
-      - ./.env
-    ports:
-      - '${ENV_SPRING_PORT:-8080}:8080'
+    tariff_manager:
+        container_name: spring_tariff_manager
+        build:
+            context: ./
+            dockerfile: ./Dockerfile
+        env_file:
+            - ./.env
+        ports:
+            - '${ENV_SPRING_PORT:-8080}:8080'

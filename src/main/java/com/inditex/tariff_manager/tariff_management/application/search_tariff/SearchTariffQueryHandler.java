@@ -8,8 +8,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public record SearchTariffQueryHandler(
-        TariffPort tariffPort
+    TariffPort tariffPort
 ) {
+
     public Tariff searchTariff(final SearchTariffQuery query) {
         return tariffPort.search(ProductId.of(query.productId()), BrandId.of(query.brandId()), query.date());
     }

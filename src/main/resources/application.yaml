@@ -1,21 +1,16 @@
-spring.application.name: tariff_manager
-
-# Database configuration
 spring:
-  datasource:
-    url=jdbc:h2:mem: testdb
-    driverClassName: org.h2.Driver
-    username: ${DB_USERANAME:sa}
-    password: ${DB_PASSWORD:password}
+    application.name: tariff_manager
+    datasource:
+        url: jdbc:h2:mem:inditexdb
+        driverClassName: org.h2.Driver
+        username: ${DB_USERNAME:sa}
+        password: ${DB_PASSWORD:password}
 
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-    defer-datasource-initialization: true
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    packages-to-scan: com.inditex.tariff_manager.shared.persistence.h2
+    jpa:
+        database-platform: org.hibernate.dialect.H2Dialect
+        defer-datasource-initialization: true
+        packages-to-scan: com.inditex.tariff_manager.shared.persistence.h2
 
 springdoc:
-  swagger-ui:
-    url: /swagger.yaml
+    swagger-ui:
+        url: /swagger.yaml

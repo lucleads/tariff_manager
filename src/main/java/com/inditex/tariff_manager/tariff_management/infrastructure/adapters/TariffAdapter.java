@@ -6,13 +6,12 @@ import com.inditex.tariff_manager.tariff_management.domain.read_model.Tariff;
 import com.inditex.tariff_manager.tariff_management.domain.read_model.value_objects.BrandId;
 import com.inditex.tariff_manager.tariff_management.domain.read_model.value_objects.ProductId;
 import com.inditex.tariff_manager.tariff_management.infrastructure.mappers.TariffMapper;
-import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
+import org.springframework.stereotype.Service;
 
 @Service
 public record TariffAdapter(
-        PriceEntityRepository repository
+    PriceEntityRepository repository
 ) implements TariffPort {
 
     @Override
@@ -21,7 +20,7 @@ public record TariffAdapter(
         // In case the criteria applies to more fields, change the approach to use ExampleMatchers instead of the query
         // and filter the results by priority.
         return TariffMapper.toAggregate(
-                repository.findHighestPriorityPriceEntity(productId.getValue(), brandId.getValue(), date)
+            repository.findHighestPriorityPriceEntity(productId.getValue(), brandId.getValue(), date)
         );
     }
 }

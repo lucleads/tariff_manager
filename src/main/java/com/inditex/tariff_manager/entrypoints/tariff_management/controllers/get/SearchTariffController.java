@@ -5,26 +5,29 @@ import com.inditex.tariff_manager.entrypoints.tariff_management.mappers.TariffTo
 import com.inditex.tariff_manager.entrypoints.tariff_management.spec.TariffsApi;
 import com.inditex.tariff_manager.tariff_management.application.search_tariff.SearchTariffQuery;
 import com.inditex.tariff_manager.tariff_management.application.search_tariff.SearchTariffQueryHandler;
+import java.time.OffsetDateTime;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.OffsetDateTime;
-
 @RestController
 @AllArgsConstructor
 public class SearchTariffController implements TariffsApi {
+
     private final SearchTariffQueryHandler queryHandler;
 
     @Override
     public ResponseEntity<TariffDto> search(
-            Long productId,
-            Long brandId,
-            OffsetDateTime date
+        Long productId,
+        Long brandId,
+        OffsetDateTime date
     ) {
         return ResponseEntity.ok(
-                TariffToTariffDtoMapper.toTariffDto(
-                        queryHandler.searchTariff(new SearchTariffQuery(productId.intValue(), brandId.intValue(), date.toLocalDateTime())
-                        )));
+            TariffToTariffDtoMapper.toTariffDto(
+                queryHandler.searchTariff(
+                    new SearchTariffQuery(productId.intValue(), brandId.intValue(), date.toLocalDateTime())
+                )
+            )
+        );
     }
 }
