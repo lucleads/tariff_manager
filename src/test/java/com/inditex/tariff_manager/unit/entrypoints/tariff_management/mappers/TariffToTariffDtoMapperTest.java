@@ -24,11 +24,11 @@ class TariffToTariffDtoMapperTest {
         TariffDto result = TariffToTariffDtoMapper.toTariffDto(tariff);
 
         // then
-        assertEquals(tariff.product().id().getValue(), result.getProductId());
-        assertEquals(tariff.brand().id().getValue(), result.getBrandId());
-        assertEquals(tariff.id().getValue(), result.getTariffId());
-        assertEquals(tariff.startDate().getValue().atOffset(ZoneOffset.UTC), result.getTariffStartDate());
-        assertEquals(tariff.endDate().getValue().atOffset(ZoneOffset.UTC), result.getTariffEndDate());
+        assertEquals(tariff.getProduct().id().getValue(), result.getProductId());
+        assertEquals(tariff.getBrand().id().getValue(), result.getBrandId());
+        assertEquals(tariff.getId().getValue(), result.getTariffId());
+        assertEquals(tariff.getStartDate().getValue().atOffset(ZoneOffset.UTC), result.getTariffStartDate());
+        assertEquals(tariff.getEndDate().getValue().atOffset(ZoneOffset.UTC), result.getTariffEndDate());
         assertNotNull(result.getPrice());
     }
 }

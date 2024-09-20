@@ -28,11 +28,11 @@ class TariffMapperTest {
         Tariff result = TariffMapper.toAggregate(priceEntity);
 
         // then
-        assertEquals(TariffId.of(priceEntity.getPriceList()), result.id());
-        assertEquals(ProductId.of(priceEntity.getProductId()), result.product().id());
-        assertEquals(BrandId.of(priceEntity.getBrandId()), result.brand().id());
-        assertEquals(TariffStartDate.of(priceEntity.getStartDate()), result.startDate());
-        assertEquals(TariffEndDate.of(priceEntity.getEndDate()), result.endDate());
-        assertEquals(Price.of(priceEntity.getPrice(), priceEntity.getCurrency()), result.price());
+        assertEquals(TariffId.of(priceEntity.getPriceList()), result.getId());
+        assertEquals(ProductId.of(priceEntity.getProductId()), result.getProduct().id());
+        assertEquals(BrandId.of(priceEntity.getBrandId()), result.getBrand().id());
+        assertEquals(TariffStartDate.of(priceEntity.getStartDate()), result.getStartDate());
+        assertEquals(TariffEndDate.of(priceEntity.getEndDate()), result.getEndDate());
+        assertEquals(Price.of(priceEntity.getPrice(), priceEntity.getCurrency()), result.getPrice());
     }
 }
