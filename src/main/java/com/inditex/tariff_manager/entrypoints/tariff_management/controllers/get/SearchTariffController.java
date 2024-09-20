@@ -18,14 +18,14 @@ public class SearchTariffController implements TariffsApi {
 
     @Override
     public ResponseEntity<TariffDto> search(
-        Long productId,
-        Long brandId,
+        Integer productId,
+        Integer brandId,
         OffsetDateTime date
     ) {
         return ResponseEntity.ok(
             TariffToTariffDtoMapper.toTariffDto(
                 queryHandler.searchTariff(
-                    new SearchTariffQuery(productId.intValue(), brandId.intValue(), date.toLocalDateTime())
+                    new SearchTariffQuery(productId, brandId, date.toLocalDateTime())
                 )
             )
         );

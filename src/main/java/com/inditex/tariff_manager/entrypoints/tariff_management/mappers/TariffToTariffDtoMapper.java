@@ -12,8 +12,8 @@ public final class TariffToTariffDtoMapper {
 
     public static TariffDto toTariffDto(final Tariff tariff) {
         TariffDto tariffDto = new TariffDto();
-        tariffDto.setProductId((long) tariff.product().id().getValue());
-        tariffDto.setBrandId((long) tariff.brand().id().getValue());
+        tariffDto.setProductId(tariff.product().id().getValue());
+        tariffDto.setBrandId(tariff.brand().id().getValue());
         tariffDto.setTariffId(tariff.id().getValue());
         tariffDto.setTariffStartDate(tariff.startDate().getValue().atOffset(UTC));
         tariffDto.setTariffEndDate(tariff.endDate().getValue().atOffset(UTC));

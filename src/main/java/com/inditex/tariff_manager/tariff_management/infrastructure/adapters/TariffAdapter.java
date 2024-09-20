@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 import org.springframework.stereotype.Service;
 
 @Service
+@SuppressWarnings("unused")
 public record TariffAdapter(
     PriceEntityRepository repository
 ) implements TariffPort {

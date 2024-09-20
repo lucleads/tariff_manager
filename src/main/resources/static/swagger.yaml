@@ -48,14 +48,14 @@ paths:
                     required: true
                     schema:
                         type: integer
-                        format: int64
+                        format: int32
                 -   name: brand_id
                     in: query
                     description: ID of the brand for which we want to obtain the rate
                     required: true
                     schema:
                         type: integer
-                        format: int64
+                        format: int32
                 -   name: date
                     in: query
                     description: Date for which we want to obtain the rate
@@ -84,11 +84,11 @@ components:
             properties:
                 product_id:
                     type: integer
-                    format: int64
+                    format: int32
                     example: 35457
                 brand_id:
                     type: integer
-                    format: int64
+                    format: int32
                     example: 5
                 tariff_id:
                     type: integer
