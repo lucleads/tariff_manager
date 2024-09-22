@@ -11,9 +11,7 @@ import com.inditex.tariff_manager.object_mothers.PriceEntityMother;
 import com.inditex.tariff_manager.object_mothers.TariffDtoMother;
 import com.inditex.tariff_manager.shared.persistence.h2.entities.PriceEntity;
 import java.time.LocalDateTime;
-import java.util.List;
 import lombok.Getter;
-import lombok.Setter;
 import org.instancio.Instancio;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -26,9 +24,6 @@ public final class TariffWorld {
     private final PriceEntity priceEntity = PriceEntityMother.randomValid();
     private final TariffDto tariffResponse = TariffDtoMother.fromPriceEntity(priceEntity);
     private final LocalDateTime searchedTariffDate = Instancio.create(LocalDateTime.class);
-    @Setter
-    @Getter
-    private List<PriceEntity> existingPriceEntities;
 
     public String stringifyTariffResponse() throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
