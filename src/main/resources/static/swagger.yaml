@@ -40,7 +40,7 @@ paths:
                 - tariff
             summary: Retrieve tariff information for a product
             description: Retrieve tariff information for a product
-            operationId: search
+            operationId: find
             parameters:
                 -   name: product_id
                     in: query
@@ -75,6 +75,10 @@ paths:
                     description: Invalid ID supplied
                 '404':
                     description: Tariff not found
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ErrorResponse'
 
 
 components:
@@ -115,3 +119,13 @@ components:
                 status:
                     type: string
                     example: "UP"
+
+        ErrorResponse:
+            type: object
+            properties:
+                requestUrl:
+                    type: string
+                    example: http://localhost:8080/tariffs
+                message:
+                    type: string
+                    example: Cannot find the tariff

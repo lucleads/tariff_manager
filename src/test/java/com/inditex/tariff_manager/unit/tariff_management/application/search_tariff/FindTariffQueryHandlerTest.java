@@ -17,7 +17,9 @@ import com.inditex.tariff_manager.tariff_management.domain.read_model.value_obje
 import com.inditex.tariff_manager.tariff_management.domain.read_model.value_objects.TariffId;
 import com.inditex.tariff_manager.tariff_management.domain.read_model.value_objects.TariffStartDate;
 import com.inditex.tariff_manager.tariff_management.infrastructure.adapters.TariffAdapter;
+import com.inditex.tariff_manager.tariff_management.infrastructure.exceptions.TariffNotFound;
 import java.time.LocalDateTime;
+import java.util.Optional;
 import org.instancio.Instancio;
 import org.instancio.junit.InstancioExtension;
 import org.junit.jupiter.api.Test;
@@ -27,7 +29,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith({InstancioExtension.class, MockitoExtension.class})
-class SearchTariffQueryHandlerTest {
+class FindTariffQueryHandlerTest {
 
     @Mock
     private PriceEntityRepository repository;
@@ -36,19 +38,19 @@ class SearchTariffQueryHandlerTest {
     private TariffAdapter tariffAdapter;
 
     @Test
-    void priceEntityRepositoryIsInvokedAndTheEntityReturnedHasProperlyValues() {
+    void priceEntityRepositoryIsInvokedAndTheEntityReturnedHasProperlyValues() throws TariffNotFound {
         // given
         PriceEntity priceEntity = Instancio.create(PriceEntity.class);
 
-        when(repository.findHighestPriorityPriceEntity(anyInt(), anyInt(), any(LocalDateTime.class)))
-            .thenReturn(priceEntity);
+        when(repository.searchHighestPriorityPriceEntity(anyInt(), anyInt(), any(LocalDateTime.class)))
+            .thenReturn(Optional.of(priceEntity));
 
         ProductId productId = Instancio.create(ProductId.class);
         BrandId brandId = Instancio.create(BrandId.class);
         LocalDateTime date = Instancio.create(LocalDateTime.class);
 
         // when
-        Tariff result = tariffAdapter.search(productId, brandId, date);
+        Tariff result = tariffAdapter.find(productId, brandId, date);
 
         // then
         assertEquals(TariffId.of(priceEntity.getPriceList()), result.getId());
@@ -58,6 +60,6 @@ class SearchTariffQueryHandlerTest {
         assertEquals(TariffEndDate.of(priceEntity.getEndDate()), result.getEndDate());
         assertEquals(Price.of(priceEntity.getPrice(), priceEntity.getCurrency()), result.getPrice());
 
-        verify(repository, times(1)).findHighestPriorityPriceEntity(productId.getValue(), brandId.getValue(), date);
+        verify(repository, times(1)).searchHighestPriorityPriceEntity(productId.getValue(), brandId.getValue(), date);
     }
 }

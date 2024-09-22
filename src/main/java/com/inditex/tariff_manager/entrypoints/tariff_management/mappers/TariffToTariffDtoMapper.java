@@ -1,7 +1,5 @@
 package com.inditex.tariff_manager.entrypoints.tariff_management.mappers;
 
-import static java.time.ZoneOffset.UTC;
-
 import com.inditex.tariff_manager.entrypoints.tariff_management.dto.TariffDto;
 import com.inditex.tariff_manager.tariff_management.domain.read_model.Tariff;
 import lombok.AccessLevel;
@@ -15,8 +13,8 @@ public final class TariffToTariffDtoMapper {
         tariffDto.setProductId(tariff.getProduct().id().getValue());
         tariffDto.setBrandId(tariff.getBrand().id().getValue());
         tariffDto.setTariffId(tariff.getId().getValue());
-        tariffDto.setTariffStartDate(tariff.getStartDate().getValue().atOffset(UTC));
-        tariffDto.setTariffEndDate(tariff.getEndDate().getValue().atOffset(UTC));
+        tariffDto.setTariffStartDate(tariff.getStartDate().getValue());
+        tariffDto.setTariffEndDate(tariff.getEndDate().getValue());
         tariffDto.setPrice(PriceToTariffPriceDto.toTariffPriceDto(tariff.getPrice()));
 
         return tariffDto;

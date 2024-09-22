@@ -6,6 +6,8 @@ Microservice to manage product rates in certain time ranges.
 
 ###### [Hexagonal Architecture](https://alistair.cockburn.us/hexagonal-architecture/)
 
+###### [CQRS (Command Query Responsibility Segregation)](https://learn.microsoft.com/es-es/azure/architecture/patterns/cqrs)
+
 ### API standard
 
 ###### [Zalando RESTful API and Event Guidelines](https://opensource.zalando.com/restful-api-guidelines/)
@@ -13,3 +15,29 @@ Microservice to manage product rates in certain time ranges.
 ### Glossary
 
 **Tariff:** Product rate in a specific date
+
+**Find:** Should find a result or throw an exception
+
+**Search:** Should find a result or return empty
+
+## Installation
+
+### Pre-requisites
+
+To be able to start development, make sure that you have any of the following prerequisites installed:
+
+- Docker
+- Maven
+- Java 21
+
+### Environment configuration
+
+The default service port mapping is:
+
+| Service | Port |
+|---------|------|
+| Spring  | 8080 |
+
+The default ports can be overwritten on the **.env** file.
+
+

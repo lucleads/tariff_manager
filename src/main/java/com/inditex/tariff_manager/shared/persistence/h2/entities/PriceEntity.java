@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "PRICES")
@@ -25,9 +26,11 @@ public class PriceEntity {
     @Column(name = "BRAND_ID")
     private int brandId;
 
+    @Setter
     @Column(name = "START_DATE")
     private LocalDateTime startDate;
 
+    @Setter
     @Column(name = "END_DATE")
     private LocalDateTime endDate;
 

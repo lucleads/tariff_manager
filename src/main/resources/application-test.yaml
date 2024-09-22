@@ -1,0 +1,10 @@
+spring:
+
+    datasource:
+        url: jdbc:h2:mem:testdb
+        driverClassName: org.h2.Driver
+        username: ${DB_USERNAME:test}
+        password: ${DB_PASSWORD:testPass}
+
+    jpa:
+        open-in-view: false # to disable unnecessary log warning

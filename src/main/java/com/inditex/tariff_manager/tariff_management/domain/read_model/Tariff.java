@@ -28,7 +28,7 @@ public final class Tariff {
         Price price
     ) {
 
-        if (endDate.getValue().isAfter(startDate.getValue())) {
+        if (endDate.getValue().isBefore(startDate.getValue())) {
             throw InvalidTariff.endDateEarlierThanStartDate();
         }
 

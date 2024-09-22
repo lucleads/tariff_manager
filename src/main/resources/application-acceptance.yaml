@@ -1,0 +1,7 @@
+spring:
+
+    autoconfigure:
+        exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration # disable database configuration for tests
+
+server:
+    port: 9999

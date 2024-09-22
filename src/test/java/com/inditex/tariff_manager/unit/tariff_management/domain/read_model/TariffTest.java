@@ -77,13 +77,13 @@ class TariffTest {
     }
 
     @Test
-    void buildTariffWithEndDateAfterStartDateThrowsException() {
+    void buildTariffWithEndDateBeforeStartDateThrowsException() {
         // given
         TariffId id = Instancio.create(TariffId.class);
         Product product = Instancio.create(Product.class);
         Brand brand = Instancio.create(Brand.class);
         TariffStartDate startDate = TariffStartDate.of(LocalDateTime.now());
-        TariffEndDate endDate = TariffEndDate.of(LocalDateTime.now().plusDays(1));
+        TariffEndDate endDate = TariffEndDate.of(LocalDateTime.now().minusDays(1));
         Price price = Instancio.create(Price.class);
 
         // when
