@@ -6,7 +6,9 @@ Microservice to manage product rates in certain time ranges.
 
 ###### [Hexagonal Architecture](https://alistair.cockburn.us/hexagonal-architecture/)
 
-###### [CQRS (Command Query Responsibility Segregation)](https://learn.microsoft.com/es-es/azure/architecture/patterns/cqrs)
+###### [Command Query Responsibility Segregation (CQRS)](https://learn.microsoft.com/es-es/azure/architecture/patterns/cqrs)
+
+##### [Domain-driven design (DDD)](https://learn.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/ddd-oriented-microservice)
 
 ### API standard
 
