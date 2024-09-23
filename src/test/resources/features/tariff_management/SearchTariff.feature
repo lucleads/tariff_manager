@@ -18,3 +18,10 @@ Feature: Search a tariff
         When I click the SEARCH TARIFF button
         Then I should see NOT FOUND status code
         And I should see an error message
+
+    @CornerCase
+    Scenario: Fails when there is a missing parameter
+        Given I fill the search tariff form missing the product id
+        When I click the SEARCH TARIFF button
+        Then I should see INVALID REQUEST status code
+        And I should see an error message

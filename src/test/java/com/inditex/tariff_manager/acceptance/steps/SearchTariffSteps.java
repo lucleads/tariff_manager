@@ -30,6 +30,13 @@ public class SearchTariffSteps extends AcceptanceTest {
         testGlobalContext.addQueryParam("date", tariffWorld.getSearchedTariffDate().toString());
     }
 
+    @Given("I fill the search tariff form missing the product id")
+    public void i_fill_the_search_tariff_form_missing_the_product_id() {
+
+        testGlobalContext.addQueryParam("brand_id", String.valueOf(tariffWorld.getPriceEntity().getBrandId()));
+        testGlobalContext.addQueryParam("date", tariffWorld.getSearchedTariffDate().toString());
+    }
+
     @Given("I already have a created price")
     public void i_already_have_a_created_price() {
         PriceEntity existingPrice = tariffWorld.getPriceEntity();
