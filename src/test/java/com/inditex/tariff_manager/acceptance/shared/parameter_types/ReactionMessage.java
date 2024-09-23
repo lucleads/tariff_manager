@@ -9,7 +9,8 @@ import org.springframework.http.HttpStatus;
 @AllArgsConstructor
 public enum ReactionMessage implements CucumberParameterType {
     // Success
-    OK("OK", HttpStatus.OK);
+    OK("OK", HttpStatus.OK),
+    NOT_FOUND("NOT FOUND", HttpStatus.NOT_FOUND);
 
     private final String typeName;
     private final HttpStatus httpStatus;

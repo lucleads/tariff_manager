@@ -11,3 +11,10 @@ Feature: Search a tariff
         When I click the SEARCH TARIFF button
         Then I should see OK status code
         And I should see the tariff information
+
+    @CornerCase
+    Scenario: Cannot find the tariff
+        Given I fill the search tariff form with valid data
+        When I click the SEARCH TARIFF button
+        Then I should see NOT FOUND status code
+        And I should see an error message

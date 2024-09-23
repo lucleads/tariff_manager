@@ -11,8 +11,6 @@ import com.inditex.tariff_manager.shared.persistence.h2.entities.PriceEntity;
 import com.inditex.tariff_manager.shared.persistence.h2.repositories.PriceEntityRepository;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import lombok.AllArgsConstructor;
 
@@ -38,15 +36,6 @@ public class SearchTariffSteps extends AcceptanceTest {
         when(priceEntityRepository.searchHighestPriorityPriceEntity(existingPrice.getProductId(),
             existingPrice.getBrandId(), tariffWorld.getSearchedTariffDate()))
             .thenReturn(Optional.of(existingPrice));
-    }
-
-    @Given("I fill the search tariff form with the info {string} {string} {string}")
-    public void i_fill_the_search_tariff_form_with_the_info(String brandId, String productId, String date) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH.mm.ss");
-
-        testGlobalContext.addQueryParam("brand_id", brandId);
-        testGlobalContext.addQueryParam("product_id", productId);
-        testGlobalContext.addQueryParam("date", LocalDateTime.parse(date, formatter).toString());
     }
 
     @Then("I should see the tariff information")
