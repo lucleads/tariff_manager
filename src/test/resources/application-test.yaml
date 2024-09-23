@@ -7,4 +7,5 @@ spring:
         password: ${DB_PASSWORD:testPass}
 
     jpa:
-        open-in-view: false # to disable unnecessary log warning
+        database-platform: org.hibernate.dialect.H2Dialect
+        defer-datasource-initialization: true

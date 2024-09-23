@@ -1,0 +1,11 @@
+{
+    "product_id": 35455,
+    "brand_id": 1,
+    "tariff_id": 3,
+    "tariff_start_date": "2020-06-15T00:00:00",
+    "tariff_end_date": "2020-06-15T11:00:00",
+    "price": {
+        "amount": 30.5,
+        "currency": "EUR"
+    }
+}
