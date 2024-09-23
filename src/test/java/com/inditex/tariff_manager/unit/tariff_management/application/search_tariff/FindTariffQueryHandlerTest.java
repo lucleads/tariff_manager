@@ -7,6 +7,9 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import com.inditex.tariff_manager.object_mothers.BrandIdMother;
+import com.inditex.tariff_manager.object_mothers.PriceEntityMother;
+import com.inditex.tariff_manager.object_mothers.ProductIdMother;
 import com.inditex.tariff_manager.shared.persistence.h2.entities.PriceEntity;
 import com.inditex.tariff_manager.shared.persistence.h2.repositories.PriceEntityRepository;
 import com.inditex.tariff_manager.tariff_management.domain.read_model.Tariff;
@@ -40,13 +43,13 @@ class FindTariffQueryHandlerTest {
     @Test
     void priceEntityRepositoryIsInvokedAndTheEntityReturnedHasProperlyValues() throws TariffNotFound {
         // given
-        PriceEntity priceEntity = Instancio.create(PriceEntity.class);
+        PriceEntity priceEntity = PriceEntityMother.random();
 
         when(repository.searchHighestPriorityPriceEntity(anyInt(), anyInt(), any(LocalDateTime.class)))
             .thenReturn(Optional.of(priceEntity));
 
-        ProductId productId = Instancio.create(ProductId.class);
-        BrandId brandId = Instancio.create(BrandId.class);
+        ProductId productId = ProductIdMother.random();
+        BrandId brandId = BrandIdMother.random();
         LocalDateTime date = Instancio.create(LocalDateTime.class);
 
         // when

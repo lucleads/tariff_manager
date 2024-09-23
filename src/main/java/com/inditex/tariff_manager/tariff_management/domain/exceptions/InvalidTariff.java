@@ -1,5 +1,9 @@
 package com.inditex.tariff_manager.tariff_management.domain.exceptions;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class InvalidTariff extends RuntimeException {
 
     public static final String MESSAGE = "Invalid tariff";

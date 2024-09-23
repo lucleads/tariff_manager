@@ -4,6 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import com.inditex.tariff_manager.object_mothers.BrandMother;
+import com.inditex.tariff_manager.object_mothers.PriceMother;
+import com.inditex.tariff_manager.object_mothers.ProductMother;
+import com.inditex.tariff_manager.object_mothers.TariffIdMother;
 import com.inditex.tariff_manager.tariff_management.domain.exceptions.InvalidTariff;
 import com.inditex.tariff_manager.tariff_management.domain.read_model.Brand;
 import com.inditex.tariff_manager.tariff_management.domain.read_model.Product;
@@ -13,7 +17,6 @@ import com.inditex.tariff_manager.tariff_management.domain.read_model.value_obje
 import com.inditex.tariff_manager.tariff_management.domain.read_model.value_objects.TariffId;
 import com.inditex.tariff_manager.tariff_management.domain.read_model.value_objects.TariffStartDate;
 import java.time.LocalDateTime;
-import org.instancio.Instancio;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
@@ -22,12 +25,12 @@ class TariffTest {
     @Test
     void buildTariffWithValidDates() {
         // given
-        TariffId id = Instancio.create(TariffId.class);
-        Product product = Instancio.create(Product.class);
-        Brand brand = Instancio.create(Brand.class);
+        TariffId id = TariffIdMother.random();
+        Product product = ProductMother.random();
+        Brand brand = BrandMother.random();
         TariffStartDate startDate = TariffStartDate.of(LocalDateTime.now());
-        TariffEndDate endDate = TariffEndDate.of(LocalDateTime.now().minusDays(1));
-        Price price = Instancio.create(Price.class);
+        TariffEndDate endDate = TariffEndDate.of(LocalDateTime.now().plusDays(1));
+        Price price = PriceMother.random();
 
         // when
         Tariff tariff = Tariff.builder()
@@ -52,13 +55,13 @@ class TariffTest {
     @Test
     void buildTariffWithSameStartDateAndEndDate() {
         // given
-        TariffId id = Instancio.create(TariffId.class);
-        Product product = Instancio.create(Product.class);
-        Brand brand = Instancio.create(Brand.class);
+        TariffId id = TariffIdMother.random();
+        Product product = ProductMother.random();
+        Brand brand = BrandMother.random();
         LocalDateTime now = LocalDateTime.now();
         TariffStartDate startDate = TariffStartDate.of(now);
         TariffEndDate endDate = TariffEndDate.of(now);
-        Price price = Instancio.create(Price.class);
+        Price price = PriceMother.random();
 
         // when
         Tariff tariff = Tariff.builder()
@@ -79,12 +82,12 @@ class TariffTest {
     @Test
     void buildTariffWithEndDateBeforeStartDateThrowsException() {
         // given
-        TariffId id = Instancio.create(TariffId.class);
-        Product product = Instancio.create(Product.class);
-        Brand brand = Instancio.create(Brand.class);
+        TariffId id = TariffIdMother.random();
+        Product product = ProductMother.random();
+        Brand brand = BrandMother.random();
         TariffStartDate startDate = TariffStartDate.of(LocalDateTime.now());
         TariffEndDate endDate = TariffEndDate.of(LocalDateTime.now().minusDays(1));
-        Price price = Instancio.create(Price.class);
+        Price price = PriceMother.random();
 
         // when
         Executable sutExecutable = () -> Tariff

@@ -2,6 +2,7 @@ package com.inditex.tariff_manager.unit.tariff_management.infrastructure.mappers
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import com.inditex.tariff_manager.object_mothers.PriceEntityMother;
 import com.inditex.tariff_manager.shared.persistence.h2.entities.PriceEntity;
 import com.inditex.tariff_manager.tariff_management.domain.read_model.Tariff;
 import com.inditex.tariff_manager.tariff_management.domain.read_model.value_objects.BrandId;
@@ -11,7 +12,6 @@ import com.inditex.tariff_manager.tariff_management.domain.read_model.value_obje
 import com.inditex.tariff_manager.tariff_management.domain.read_model.value_objects.TariffId;
 import com.inditex.tariff_manager.tariff_management.domain.read_model.value_objects.TariffStartDate;
 import com.inditex.tariff_manager.tariff_management.infrastructure.mappers.TariffMapper;
-import org.instancio.Instancio;
 import org.instancio.junit.InstancioExtension;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -22,7 +22,7 @@ class TariffMapperTest {
     @Test
     void testToAggregateWithRandomValues() {
         // given
-        PriceEntity priceEntity = Instancio.create(PriceEntity.class);
+        PriceEntity priceEntity = PriceEntityMother.random();
 
         // when
         Tariff result = TariffMapper.toAggregate(priceEntity);

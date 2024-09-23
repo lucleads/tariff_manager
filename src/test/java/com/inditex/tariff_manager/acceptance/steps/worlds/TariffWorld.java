@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
 @Scope(SCOPE_SINGLETON)
 public final class TariffWorld {
 
-    private final PriceEntity priceEntity = PriceEntityMother.randomValid();
+    private final PriceEntity priceEntity = PriceEntityMother.random();
     private final TariffDto tariffResponse = TariffDtoMother.fromPriceEntity(priceEntity);
     private final LocalDateTime searchedTariffDate = Instancio.create(LocalDateTime.class);
 

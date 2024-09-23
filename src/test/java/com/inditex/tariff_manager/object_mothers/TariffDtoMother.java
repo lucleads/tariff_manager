@@ -4,7 +4,10 @@ import com.inditex.tariff_manager.entrypoints.tariff_management.dto.TariffDto;
 import com.inditex.tariff_manager.entrypoints.tariff_management.dto.TariffPriceDto;
 import com.inditex.tariff_manager.shared.persistence.h2.entities.PriceEntity;
 import java.math.BigDecimal;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class TariffDtoMother {
 
     public static TariffDto fromPriceEntity(PriceEntity priceEntity) {
