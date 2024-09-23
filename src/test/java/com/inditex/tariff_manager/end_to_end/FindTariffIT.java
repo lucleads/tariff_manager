@@ -5,12 +5,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import com.inditex.tariff_manager.config.Profiles;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
-import org.junit.jupiter.api.Test;
+import java.util.stream.Stream;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -25,108 +27,54 @@ import org.springframework.web.util.UriComponentsBuilder;
 @ActiveProfiles(Profiles.TEST)
 class FindTariffIT {
 
+    public static final String URL = "http://localhost:";
+    private static final int PRODUCT_ID = 35455;
+    private static final int BRAND_ID = 1;
+    private static final String BASE_URL = "/tariffs";
     @LocalServerPort
     private int port;
 
     @Autowired
     private TestRestTemplate restTemplate;
 
-    @Test
-    void successfulGetTariff1() throws IOException {
-        URI uri = UriComponentsBuilder.fromHttpUrl("http://localhost:" + port + "/tariffs")
-            .queryParam("product_id", 35455)
-            .queryParam("brand_id", 1)
-            .queryParam("date", "2020-06-14T10:00:00Z")
-            .build()
-            .toUri();
-        ResponseEntity<String> response = this.restTemplate.getForEntity(uri, String.class);
+    @Autowired
+    private ObjectMapper objectMapper;
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        JsonNode expectedTariff = objectMapper.readTree(readExpectedTariffResponse("tariff1"));
+    private static Stream<Arguments> tariffTestCases() {
+        return Stream.of(
+            Arguments.of("2020-06-14T10:00:00Z", "tariff1"),
+            Arguments.of("2020-06-14T16:00:00Z", "tariff2"),
+            Arguments.of("2020-06-14T21:00:00Z", "tariff1"),
+            Arguments.of("2020-06-15T10:00:00Z", "tariff3"),
+            Arguments.of("2020-06-16T21:00:00Z", "tariff4")
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("tariffTestCases")
+    void testGetTariff(String date, String expectedTariffFileName) throws IOException {
+        URI uri = buildUri(date);
+        ResponseEntity<String> response = restTemplate.getForEntity(uri, String.class);
+
+        JsonNode expectedTariff = readExpectedTariffResponse(expectedTariffFileName);
         JsonNode actualTariff = objectMapper.readTree(response.getBody());
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertEquals(expectedTariff, actualTariff);
     }
 
-    @Test
-    void successfulGetTariff2() throws IOException {
-        URI uri = UriComponentsBuilder.fromHttpUrl("http://localhost:" + port + "/tariffs")
-            .queryParam("product_id", 35455)
-            .queryParam("brand_id", 1)
-            .queryParam("date", "2020-06-14T16:00:00Z")
+    private URI buildUri(String date) {
+        return UriComponentsBuilder.fromHttpUrl(URL + port + BASE_URL)
+            .queryParam("product_id", PRODUCT_ID)
+            .queryParam("brand_id", BRAND_ID)
+            .queryParam("date", date)
             .build()
             .toUri();
-        ResponseEntity<String> response = this.restTemplate.getForEntity(uri, String.class);
-
-        ObjectMapper objectMapper = new ObjectMapper();
-        JsonNode expectedTariff = objectMapper.readTree(readExpectedTariffResponse("tariff2"));
-        JsonNode actualTariff = objectMapper.readTree(response.getBody());
-
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertEquals(expectedTariff, actualTariff);
     }
 
-    @Test
-    void successfulGetTariff1_2() throws IOException {
-        URI uri = UriComponentsBuilder.fromHttpUrl("http://localhost:" + port + "/tariffs")
-            .queryParam("product_id", 35455)
-            .queryParam("brand_id", 1)
-            .queryParam("date", "2020-06-14T21:00:00Z")
-            .build()
-            .toUri();
-        ResponseEntity<String> response = this.restTemplate.getForEntity(uri, String.class);
-
-        ObjectMapper objectMapper = new ObjectMapper();
-        JsonNode expectedTariff = objectMapper.readTree(readExpectedTariffResponse("tariff1"));
-        JsonNode actualTariff = objectMapper.readTree(response.getBody());
-
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertEquals(expectedTariff, actualTariff);
+    private JsonNode readExpectedTariffResponse(String tariffFileName) throws IOException {
+        File file = ResourceUtils.getFile("classpath:end_to_end/expected_responses/" + tariffFileName + ".json");
+        return objectMapper.readTree(file);
     }
-
-    @Test
-    void successfulGetTariff3() throws IOException {
-        URI uri = UriComponentsBuilder.fromHttpUrl("http://localhost:" + port + "/tariffs")
-            .queryParam("product_id", 35455)
-            .queryParam("brand_id", 1)
-            .queryParam("date", "2020-06-15T10:00:00Z")
-            .build()
-            .toUri();
-        ResponseEntity<String> response = this.restTemplate.getForEntity(uri, String.class);
-
-        ObjectMapper objectMapper = new ObjectMapper();
-        JsonNode expectedTariff = objectMapper.readTree(readExpectedTariffResponse("tariff3"));
-        JsonNode actualTariff = objectMapper.readTree(response.getBody());
-
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertEquals(expectedTariff, actualTariff);
-    }
-
-    @Test
-    void successfulGetTariff4() throws IOException {
-        URI uri = UriComponentsBuilder.fromHttpUrl("http://localhost:" + port + "/tariffs")
-            .queryParam("product_id", 35455)
-            .queryParam("brand_id", 1)
-            .queryParam("date", "2020-06-16T21:00:00Z")
-            .build()
-            .toUri();
-        ResponseEntity<String> response = this.restTemplate.getForEntity(uri, String.class);
-
-        ObjectMapper objectMapper = new ObjectMapper();
-        JsonNode expectedTariff = objectMapper.readTree(readExpectedTariffResponse("tariff4"));
-        JsonNode actualTariff = objectMapper.readTree(response.getBody());
-
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertEquals(expectedTariff, actualTariff);
-    }
-
-    private String readExpectedTariffResponse(String tariff) throws IOException {
-        ObjectMapper om = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
-        File file = ResourceUtils.getFile("classpath:end_to_end/expected_responses/" + tariff + ".json");
-        JsonNode json = om.readTree(file);
-
-        return om.writeValueAsString(json);
-    }
-
 }
+
