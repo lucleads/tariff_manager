@@ -21,6 +21,7 @@ public class PriceEntity {
 
     @Id
     @Column(name = "PRICE_LIST")
+    @Setter
     private int priceList;
 
     @Column(name = "BRAND_ID")
@@ -37,6 +38,7 @@ public class PriceEntity {
     @Column(name = "PRODUCT_ID")
     private int productId;
 
+    @Setter
     @Column(name = "PRIORITY")
     private int priority;
 

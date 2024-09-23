@@ -17,4 +17,14 @@ public final class PriceEntityMother {
 
         return priceEntity;
     }
+
+    public static PriceEntity randomWithPriority(int priority) {
+        PriceEntity priceEntity = Instancio.create(PriceEntity.class);
+
+        priceEntity.setStartDate(LocalDateTime.now().minusDays(2));
+        priceEntity.setEndDate(LocalDateTime.now().plusDays(1));
+        priceEntity.setPriority(priority);
+
+        return priceEntity;
+    }
 }
