@@ -1,4 +1,4 @@
-package com.inditex.tariff_manager.unit.config;
+package com.inditex.config.junit;
 
 import static org.apache.commons.lang3.StringUtils.SPACE;
 import static org.apache.commons.lang3.StringUtils.capitalize;

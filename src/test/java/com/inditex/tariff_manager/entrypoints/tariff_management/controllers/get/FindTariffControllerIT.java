@@ -1,4 +1,4 @@
-package com.inditex.tariff_manager.integration.entrypoints.tariff_management.controllers.get;
+package com.inditex.tariff_manager.entrypoints.tariff_management.controllers.get;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -6,7 +6,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.inditex.tariff_manager.entrypoints.tariff_management.controllers.get.FindTariffController;
 import com.inditex.tariff_manager.entrypoints.tariff_management.dto.TariffDto;
 import com.inditex.tariff_manager.entrypoints.tariff_management.mappers.TariffToTariffDtoMapper;
 import com.inditex.tariff_manager.object_mothers.TariffMother;
@@ -23,7 +22,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 @WebMvcTest(controllers = {FindTariffController.class})
-class FindTariffControllerTestIT {
+class FindTariffControllerIT {
 
     @Autowired
     private MockMvc mockMvc;

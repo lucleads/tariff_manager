@@ -1,10 +1,9 @@
-package com.inditex.tariff_manager.unit.tariff_management.domain.read_model.value_objects;
+package com.inditex.tariff_manager.tariff_management.domain.read_model.value_objects;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.inditex.tariff_manager.tariff_management.domain.exceptions.InvalidPrice;
-import com.inditex.tariff_manager.tariff_management.domain.read_model.value_objects.Price;
 import org.junit.jupiter.api.Test;
 
 class PriceTest {

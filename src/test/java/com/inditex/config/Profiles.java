@@ -1,4 +1,4 @@
-package com.inditex.tariff_manager.config;
+package com.inditex.config;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

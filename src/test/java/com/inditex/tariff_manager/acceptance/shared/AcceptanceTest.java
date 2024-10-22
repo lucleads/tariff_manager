@@ -1,6 +1,6 @@
 package com.inditex.tariff_manager.acceptance.shared;
 
-import com.inditex.tariff_manager.config.Profiles;
+import com.inditex.config.Profiles;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.context.annotation.Import;

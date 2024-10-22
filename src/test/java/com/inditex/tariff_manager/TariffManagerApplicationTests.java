@@ -2,7 +2,7 @@ package com.inditex.tariff_manager;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.inditex.tariff_manager.config.Profiles;
+import com.inditex.config.Profiles;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;

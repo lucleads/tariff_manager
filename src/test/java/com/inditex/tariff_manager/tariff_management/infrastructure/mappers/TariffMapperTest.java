@@ -1,4 +1,4 @@
-package com.inditex.tariff_manager.unit.tariff_management.infrastructure.mappers;
+package com.inditex.tariff_manager.tariff_management.infrastructure.mappers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -11,7 +11,6 @@ import com.inditex.tariff_manager.tariff_management.domain.read_model.value_obje
 import com.inditex.tariff_manager.tariff_management.domain.read_model.value_objects.TariffEndDate;
 import com.inditex.tariff_manager.tariff_management.domain.read_model.value_objects.TariffId;
 import com.inditex.tariff_manager.tariff_management.domain.read_model.value_objects.TariffStartDate;
-import com.inditex.tariff_manager.tariff_management.infrastructure.mappers.TariffMapper;
 import org.instancio.junit.InstancioExtension;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

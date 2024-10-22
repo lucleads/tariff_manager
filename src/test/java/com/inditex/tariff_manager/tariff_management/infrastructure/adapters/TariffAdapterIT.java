@@ -1,4 +1,4 @@
-package com.inditex.tariff_manager.integration.tariff_management.infrastructure.adapters;
+package com.inditex.tariff_manager.tariff_management.infrastructure.adapters;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.inditex.tariff_manager.integration.IntegrationTest;
+import com.inditex.config.IntegrationTest;
 import com.inditex.tariff_manager.object_mothers.BrandIdMother;
 import com.inditex.tariff_manager.object_mothers.PriceEntityMother;
 import com.inditex.tariff_manager.object_mothers.ProductIdMother;
@@ -16,7 +16,6 @@ import com.inditex.tariff_manager.shared.persistence.h2.repositories.PriceEntity
 import com.inditex.tariff_manager.tariff_management.domain.read_model.Tariff;
 import com.inditex.tariff_manager.tariff_management.domain.read_model.value_objects.BrandId;
 import com.inditex.tariff_manager.tariff_management.domain.read_model.value_objects.ProductId;
-import com.inditex.tariff_manager.tariff_management.infrastructure.adapters.TariffAdapter;
 import com.inditex.tariff_manager.tariff_management.infrastructure.exceptions.TariffNotFound;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;

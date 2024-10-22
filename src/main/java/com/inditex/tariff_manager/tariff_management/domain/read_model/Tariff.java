@@ -6,9 +6,11 @@ import com.inditex.tariff_manager.tariff_management.domain.read_model.value_obje
 import com.inditex.tariff_manager.tariff_management.domain.read_model.value_objects.TariffId;
 import com.inditex.tariff_manager.tariff_management.domain.read_model.value_objects.TariffStartDate;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 @Getter
+@EqualsAndHashCode
 public final class Tariff {
 
     private final TariffId id;

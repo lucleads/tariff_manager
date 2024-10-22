@@ -1,10 +1,9 @@
-package com.inditex.tariff_manager.unit.entrypoints.tariff_management.mappers;
+package com.inditex.tariff_manager.entrypoints.tariff_management.mappers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import com.inditex.tariff_manager.entrypoints.tariff_management.dto.TariffDto;
-import com.inditex.tariff_manager.entrypoints.tariff_management.mappers.TariffToTariffDtoMapper;
 import com.inditex.tariff_manager.object_mothers.TariffMother;
 import com.inditex.tariff_manager.tariff_management.domain.read_model.Tariff;
 import org.junit.jupiter.api.Test;

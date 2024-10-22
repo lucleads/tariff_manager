@@ -1,11 +1,11 @@
-package com.inditex.tariff_manager.end_to_end;
+package com.inditex.tariff_manager.entrypoints.tariff_management.controllers.get;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.inditex.tariff_manager.config.Profiles;
+import com.inditex.config.Profiles;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
@@ -25,7 +25,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles(Profiles.TEST)
-class FindTariffIT {
+class FindTariffE2E {
 
     public static final String URL = "http://localhost:";
     private static final int PRODUCT_ID = 35455;

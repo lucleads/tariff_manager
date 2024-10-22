@@ -1,4 +1,4 @@
-package com.inditex.tariff_manager.unit.tariff_management.domain.read_model;
+package com.inditex.tariff_manager.tariff_management.domain.read_model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -9,9 +9,6 @@ import com.inditex.tariff_manager.object_mothers.PriceMother;
 import com.inditex.tariff_manager.object_mothers.ProductMother;
 import com.inditex.tariff_manager.object_mothers.TariffIdMother;
 import com.inditex.tariff_manager.tariff_management.domain.exceptions.InvalidTariff;
-import com.inditex.tariff_manager.tariff_management.domain.read_model.Brand;
-import com.inditex.tariff_manager.tariff_management.domain.read_model.Product;
-import com.inditex.tariff_manager.tariff_management.domain.read_model.Tariff;
 import com.inditex.tariff_manager.tariff_management.domain.read_model.value_objects.Price;
 import com.inditex.tariff_manager.tariff_management.domain.read_model.value_objects.TariffEndDate;
 import com.inditex.tariff_manager.tariff_management.domain.read_model.value_objects.TariffId;

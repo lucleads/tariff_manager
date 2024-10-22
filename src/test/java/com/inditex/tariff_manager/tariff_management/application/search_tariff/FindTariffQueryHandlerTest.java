@@ -1,4 +1,4 @@
-package com.inditex.tariff_manager.unit.tariff_management.application.search_tariff;
+package com.inditex.tariff_manager.tariff_management.application.search_tariff;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;

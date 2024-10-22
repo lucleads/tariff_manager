@@ -1,6 +1,5 @@
-package com.inditex.tariff_manager.integration;
+package com.inditex.config;
 
-import com.inditex.tariff_manager.config.Profiles;
 import lombok.NoArgsConstructor;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
