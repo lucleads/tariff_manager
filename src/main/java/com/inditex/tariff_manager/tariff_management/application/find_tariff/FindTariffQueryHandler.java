@@ -8,7 +8,7 @@ import com.inditex.tariff_manager.tariff_management.infrastructure.exceptions.Ta
 import org.springframework.stereotype.Service;
 
 @Service
-public record SearchTariffQueryHandler(
+public record FindTariffQueryHandler(
     TariffPort tariffPort
 ) {
 

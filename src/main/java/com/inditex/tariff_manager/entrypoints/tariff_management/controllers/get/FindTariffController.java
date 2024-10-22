@@ -4,7 +4,7 @@ import com.inditex.tariff_manager.entrypoints.tariff_management.dto.TariffDto;
 import com.inditex.tariff_manager.entrypoints.tariff_management.mappers.TariffToTariffDtoMapper;
 import com.inditex.tariff_manager.entrypoints.tariff_management.spec.TariffsApi;
 import com.inditex.tariff_manager.tariff_management.application.find_tariff.FindTariffQuery;
-import com.inditex.tariff_manager.tariff_management.application.find_tariff.SearchTariffQueryHandler;
+import com.inditex.tariff_manager.tariff_management.application.find_tariff.FindTariffQueryHandler;
 import com.inditex.tariff_manager.tariff_management.infrastructure.exceptions.TariffNotFound;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class FindTariffController implements TariffsApi {
 
-    private final SearchTariffQueryHandler queryHandler;
+    private final FindTariffQueryHandler queryHandler;
 
     @Override
     public ResponseEntity<TariffDto> find(
